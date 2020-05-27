@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import Image from './Image'
+
 
 class DisplayFeatureImage extends Component {
+   
     render() {
         return (
             <div>
-                <h1>feature image</h1>
+                <Image key={this.props.featureImage.id} imageDetails={this.props.featureImage} handleClick={this.props.featuredClick}/>
             </div>
         );
     }

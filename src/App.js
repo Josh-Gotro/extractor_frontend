@@ -18,6 +18,7 @@ class App extends Component {
       allImages: null,
       allColors: null,
       featuredImage: [],
+      colors: [],
     }
   }
 
@@ -50,28 +51,17 @@ class App extends Component {
     return (
       <div className="App">
         <div className={"Card"} >
-          <span className="Splotch" >
-            <DisplayColors />
-          </span>
-          <span className="Splotch" >
-            <DisplayColors />
-          </span>
-          <span className="Splotch" >
-            <DisplayColors />
-          </span>
           <span>
             <DisplayFeatureImage featureImage={this.state.featuredImage} featuredClick={this.featureClick}/>
           </span>
         </div>
         <Palette src={this.state.featuredImage.html} crossOrigin="Anonymous" colorCount={3}>
-          {({ data }) => (
-            <ul className='Hidden' style={{ color: data }}>
+          {({ data }) => ( 
+            <div className='Hidden' style={{ color: data }}>
               {data.map(color => (
-               <li key={color} style={{ backgroundColor: color }}>
-                  {color}
-                </li>
+                <DisplayColors  className='splotch' color={color} /> 
               ))}
-            </ul>
+            </div>
           )}
           </Palette>
         <MatchedImages allImages={this.state.allImages} chooseFeatured={this.chooseFeaturedImage}/>

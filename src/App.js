@@ -3,6 +3,8 @@ import './App.css';
 import DisplayColors from './components/DisplayColors'
 import DisplayFeatureImage from './components/DisplayFeatureImage'
 import MatchedImages from './components/MatchedImages'
+import { Palette } from 'color-thief-react';
+
 
 // import ColorThief from '../node_modules/colorthief/dist/color-thief.mjs'
 // const ColorThief = require('colorthief');
@@ -39,19 +41,30 @@ class App extends Component {
       <div className="App">
         <div className={"Card"} >
           <span className="Splotch" >
-            < DisplayColors />
+            <DisplayColors />
           </span>
           <span className="Splotch" >
-            < DisplayColors />
+            <DisplayColors />
           </span>
           <span className="Splotch" >
-            < DisplayColors />
+            <DisplayColors />
           </span>
           <span>
-            < DisplayFeatureImage featureImage={this.state.featuredImage} featuredClick={this.featureClick}/>
+            <DisplayFeatureImage featureImage={this.state.featuredImage} featuredClick={this.featureClick}/>
           </span>
         </div>
-        < MatchedImages allImages={this.state.allImages} chooseFeatured={this.chooseFeaturedImage}/>
+        <Palette src='https://i.picsum.photos/id/100/200/300.jpg' crossOrigin="Anonymous" colorCount={3}>
+          {({ data }) => (
+            <ul style={{ color: data }}>
+              {data.map(color => (
+                <li key={color} style={{ backgroundColor: color }}>
+                  {color}
+                </li>
+              ))}
+            </ul>
+          )}
+          </Palette>
+        <MatchedImages allImages={this.state.allImages} chooseFeatured={this.chooseFeaturedImage}/>
       </div>
     )
     }

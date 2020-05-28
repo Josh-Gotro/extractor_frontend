@@ -28,7 +28,7 @@ class App extends Component {
   }
 
   chooseFeaturedImage = (imageInfo) => {
-    console.log("we did it yay", imageInfo)
+    //console.log("we did it yay", imageInfo)
     this.setState({ featuredImage: imageInfo })
     // this.setState({})
   }

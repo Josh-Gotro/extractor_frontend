@@ -17,7 +17,7 @@ class App extends Component {
     this.state = {
       allImages: null,
       allColors: null,
-      featuredImage: []
+      featuredImage: null,
     }
   }
 
@@ -27,12 +27,18 @@ class App extends Component {
   }
 
   chooseFeaturedImage = (imageInfo) => {
-    console.log("we did it yay", imageInfo)
+    console.log("we did it yay", imageInfo.html)
     this.setState({featuredImage: imageInfo})
   }
 
   featureClick = () => {
     console.log("ooooo mmmm gggg")
+  }
+
+  imageSrc = () => {
+    if (this.state.featuredImage !== null) {
+      return this.state.featuredImage
+    }
   }
 
 
@@ -50,10 +56,10 @@ class App extends Component {
             <DisplayColors />
           </span>
           <span>
-            <DisplayFeatureImage featureImage={this.state.featuredImage} featuredClick={this.featureClick}/>
+            <DisplayFeatureImage  featuredClick={this.featureClick} img={this.imageSrc()}/>
           </span>
         </div>
-        <Palette src='https://i.picsum.photos/id/100/200/300.jpg' crossOrigin="Anonymous" colorCount={3}>
+        <Palette src='' crossOrigin="Anonymous" colorCount={3}>
           {({ data }) => (
             <ul style={{ color: data }}>
               {data.map(color => (

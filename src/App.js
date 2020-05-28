@@ -59,7 +59,7 @@ class App extends Component {
           {({ data }) => ( 
             <div className='Hidden' style={{ color: data }}>
               {data.map(color => (
-                <DisplayColors  className='splotch' color={color} /> 
+                <DisplayColors color={color} /> 
               ))}
             </div>
           )}

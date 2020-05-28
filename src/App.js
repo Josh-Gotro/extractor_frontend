@@ -17,7 +17,7 @@ class App extends Component {
     this.state = {
       allImages: null,
       allColors: null,
-      featuredImage: []
+      featuredImage: [],
     }
   }
 
@@ -28,11 +28,21 @@ class App extends Component {
 
   chooseFeaturedImage = (imageInfo) => {
     console.log("we did it yay", imageInfo)
-    this.setState({featuredImage: imageInfo})
+    this.setState({ featuredImage: imageInfo })
+    // this.setState({})
   }
 
-  featureClick = () => {
-    console.log("ooooo mmmm gggg")
+  featureClick = (image) => {
+    //console.log("ooooo mmmm gggg", this.state)
+    this.setState({
+      allImages: 
+        this.state.allImages.map(img => {
+          if (img.id === image.id) {
+           img.pinned = true
+          }
+          return img
+        })
+    })
   }
 
 
@@ -53,11 +63,11 @@ class App extends Component {
             <DisplayFeatureImage featureImage={this.state.featuredImage} featuredClick={this.featureClick}/>
           </span>
         </div>
-        <Palette src='https://i.picsum.photos/id/100/200/300.jpg' crossOrigin="Anonymous" colorCount={3}>
+        <Palette src={this.state.featuredImage.html} crossOrigin="Anonymous" colorCount={3}>
           {({ data }) => (
-            <ul style={{ color: data }}>
+            <ul className='Hidden' style={{ color: data }}>
               {data.map(color => (
-                <li key={color} style={{ backgroundColor: color }}>
+               <li key={color} style={{ backgroundColor: color }}>
                   {color}
                 </li>
               ))}

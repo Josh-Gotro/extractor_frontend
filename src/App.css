@@ -1,7 +1,6 @@
-
 .App {
   text-align: center;
-  background-color: rgb(206, 213, 223);
+  /* background-color: rgb(206, 213, 223); */
   min-height: 100vh;
   display: inline-flexbox;
   align-items: center;
@@ -15,7 +14,7 @@
   width: 200px;
   margin: 20px;
   /* background-color: #fff; */
-  border: 2px solid rgb(187, 186, 186);
+  border: 1px solid rgb(187, 186, 186);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -25,7 +24,8 @@
 }
 
 .Card {
-  background-color: rgb(205, 212, 222);
+  /* background-color: rgb(205, 212, 222); */
+  background-color: green;
 
   padding: 64px;
   display: flex;
@@ -36,13 +36,13 @@
 }
 
 .Row {
+  background-color: yellow;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: center wrap;
   padding: 0 4px;
 }
 
 .Column {
-  background-color: pink;
   max-width: 33%;
   padding: 0 4px;
 }
@@ -58,13 +58,20 @@
 }
 
 .ImagePool {
-  background-color: yellow;
+  background-color: pink;
   align-self: flex-start;
   
   flex: 25%;
   max-width: 25%;
   padding: 0 4px;
 }
+
+
+
+
+
+
+
 
 
 

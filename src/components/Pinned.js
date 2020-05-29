@@ -1,11 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
+import Image from './Image'
 
-const Pinned = () => {
+const Pinned = (props) => {
+
+
     return (
-        <div className="Triangle" onClick={() => this.props.colorClick(this.props.color)}>
+        <div className="Triangle" onClick={props.pinClick}>
             
         </div>
     );
 }
 
 export default Pinned;
+
+

@@ -5,15 +5,15 @@ import Pinned from './Pinned';
 
 // import About from './About';
 
-const About = () => {
-    return (
+const About = () => (
+    
         <about>
             <Switch>
                 <Route path='/pinned' component={Pinned} />
                 <Route path='/all' component={MatchedImages} />
             </Switch>
         </about>
-    );
-}
+   
+)
 
 export default About;

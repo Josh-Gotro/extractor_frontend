@@ -13,7 +13,7 @@ class Image extends Component {
     render() {
        
         return (
-            <div onClick={() => this.props.handleClick(this.props.imageDetails)}>
+            <div className={"focuss"} onClick={() => this.props.handleClick(this.props.imageDetails)}>
                 {/* {this.props.imageDetails.id} */}
                 {this.callImage()}
             

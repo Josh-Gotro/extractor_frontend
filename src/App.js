@@ -19,8 +19,8 @@ class App extends Component {
       allColors: null,
       featuredImage: [],
       colors: [],
-
     }
+  
   }
 
   componentDidMount = () => {
@@ -32,13 +32,13 @@ class App extends Component {
 
     //console.log("we did it yay", imageInfo)
     this.setState({ featuredImage: imageInfo })
-    // this.setState({})
+   
 
   }
 
   featureClick = (e, image) => {
     //console.log("ooooo mmmm gggg", this.state)
-    e.preventDefault()
+    // e.preventDefault()
     this.setState({
       allImages: 
         this.state.allImages.map(img => {
@@ -68,13 +68,29 @@ class App extends Component {
     })
   }
 
+  saveColor = (color) => {
+    console.log(color);
+    this.setState({colors: color});
+    fetch(`http://localhost:3001/colors`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({rgb: color})
+
+    }).then(r => r.json()).then(console.log("hi"));
+
+  }
+
+
   render() {
     return (
       <div className="App">
         {/* <nav className="RowTwo"><h1>nav</h1></nav> */}
         <div className={"Card"} >
           <span>
-            <DisplayFeatureImage featureImage={this.state.featuredImage} featuredClick={this.featureClick} handleClick={this.deleteMe}/>
+            <DisplayFeatureImage featureImage={this.state.featuredImage} featuredClick={this.featureClick} handleClick={this.deleteMe} savedColor={this.state.colors}/>
           </span>
         </div>
       
@@ -83,7 +99,7 @@ class App extends Component {
           {({ data }) => ( 
             <div className={"Row"}  style={{ color: data }}>
               {data.map(color => (
-                <DisplayColors key={color} color={color} />
+                <DisplayColors key={color} color={color} colorClick={this.saveColor}/>
                 
               ))}
             </div>

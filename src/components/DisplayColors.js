@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 class DisplayColors extends Component {
     render() {
         return (
-            <span>
-                <h1>color</h1>
+            <span className='Splotch' style={{background: this.props.color}}>
+                {this.props.color}
             </span>
         );
     }

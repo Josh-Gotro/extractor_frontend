@@ -17,7 +17,9 @@ class App extends Component {
     this.state = {
       allImages: null,
       allColors: null,
-      featuredImage: null,
+      featuredImage: [],
+      colors: [],
+
     }
   }
 
@@ -27,12 +29,24 @@ class App extends Component {
   }
 
   chooseFeaturedImage = (imageInfo) => {
-    console.log("we did it yay", imageInfo.html)
-    this.setState({featuredImage: imageInfo})
+
+    //console.log("we did it yay", imageInfo)
+    this.setState({ featuredImage: imageInfo })
+    // this.setState({})
+
   }
 
-  featureClick = () => {
-    console.log("ooooo mmmm gggg")
+  featureClick = (image) => {
+    //console.log("ooooo mmmm gggg", this.state)
+    this.setState({
+      allImages: 
+        this.state.allImages.map(img => {
+          if (img.id === image.id) {
+           img.pinned = true
+          }
+          return img
+        })
+    })
   }
 
   imageSrc = () => {
@@ -45,29 +59,21 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <nav><h1>nav</h1></nav>
         <div className={"Card"} >
-          <span className="Splotch" >
-            <DisplayColors />
-          </span>
-          <span className="Splotch" >
-            <DisplayColors />
-          </span>
-          <span className="Splotch" >
-            <DisplayColors />
-          </span>
           <span>
             <DisplayFeatureImage  featuredClick={this.featureClick} img={this.imageSrc()}/>
           </span>
         </div>
-        <Palette src='' crossOrigin="Anonymous" colorCount={3}>
-          {({ data }) => (
-            <ul style={{ color: data }}>
+
+        <Palette src={this.state.featuredImage.html} crossOrigin="Anonymous" colorCount={3}>
+          {({ data }) => ( 
+            <div className='Hidden' style={{ color: data }}>
+
               {data.map(color => (
-                <li key={color} style={{ backgroundColor: color }}>
-                  {color}
-                </li>
+                <DisplayColors color={color} /> 
               ))}
-            </ul>
+            </div>
           )}
           </Palette>
         <MatchedImages allImages={this.state.allImages} chooseFeatured={this.chooseFeaturedImage}/>

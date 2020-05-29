@@ -25,6 +25,7 @@
   -webkit-text-stroke: 1px pink;
   box-shadow: 0 70px 70px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
   box-sizing: border-box;
+  cursor: grabbing;
 }
 
 .Card {
@@ -79,6 +80,8 @@ img {
   box-shadow: 0 70px 70px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
   box-sizing: border-box;
   margin: 12px;
+  cursor: grabbing;
+
   
 
 }
@@ -95,6 +98,7 @@ img {
   /* -webkit-text-stroke: 1px pink; */
     box-shadow: 0 70px 70px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
   box-sizing: border-box;
+  cursor: not-allowed;
 }
 
 .Triangle {
@@ -106,9 +110,9 @@ img {
   /* box-sizing: border-box; */
   width: 0;
   height: 0;
-  border-left: 50px solid transparent;
-  border-right: 50px solid transparent;
-  border-bottom: 100px solid red;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 50px solid red;
   color: rgb(205, 212, 222);
   
 }
@@ -121,10 +125,16 @@ img {
 
   width: 0;
   height: 0;
-  border-left: 50px solid transparent;
-  border-right: 50px solid transparent;
-  border-top: 100px solid red;
-  
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-top: 50px solid red;
+}
+
+.SomeText {
+  color: goldenrod;
+  font-family: "Lucida Console", Courier, monospace;
+  /* font: italic; */
+  /* -webkit-text-stroke: 1px pink; */
 }
 
 

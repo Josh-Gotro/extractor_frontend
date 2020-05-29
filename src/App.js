@@ -62,7 +62,7 @@ class App extends Component {
         <nav><h1>nav</h1></nav>
         <div className={"Card"} >
           <span>
-            <DisplayFeatureImage  featuredClick={this.featureClick} img={this.imageSrc()}/>
+            <DisplayFeatureImage featureImage={this.state.featuredImage} featuredClick={this.featureClick} />
           </span>
         </div>
       

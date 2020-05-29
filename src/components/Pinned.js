@@ -1,15 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
 import Image from './Image'
 
-const Pinned = (props) => {
-
-
+class Pinned extends React.Component {
+    render() {
     return (
-        <div className="Triangle" onClick={props.pinClick}>
+        <div onClick={this.props.pinClick}>
             
         </div>
-    );
+    )};
 }
 
 export default Pinned;

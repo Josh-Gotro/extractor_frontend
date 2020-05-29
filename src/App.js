@@ -6,7 +6,7 @@ import MatchedImages from './components/MatchedImages'
 import { Palette } from 'color-thief-react';
 import About from './components/About'
 import Pinned from './components/Pinned'
-import { Link } from 'react-router-dom'
+import { Link, Route } from 'react-router-dom'
 
 class App extends Component {
   constructor() {
@@ -16,8 +16,8 @@ class App extends Component {
       allColors: null,
       featuredImage: [],
       colors: [],
+      pinned: null
     }
- 
   }
 
   componentDidMount = () => {
@@ -30,9 +30,6 @@ class App extends Component {
     window.scrollTo(0, 0);
   }
 
-
-
-
   chooseFeaturedImage = (imageInfo) => {
     this.setState({ featuredImage: imageInfo })
     this.updatePinned(imageInfo.id)
@@ -43,11 +40,18 @@ class App extends Component {
       allImages:
         this.state.allImages.map(img => {
           if (img.id === image.id) {
-            img.pinned = true
+            img.pinned = true;
           }
           return img
         })
     });
+
+    this.state.allImages.filter(img =>{
+      if (img.pinned === true) {
+         this.setState({ pinned: img})
+      }
+      return img
+    })
   }
 
   updatePinned = (id) => {
@@ -59,7 +63,6 @@ class App extends Component {
       },
       body: JSON.stringify({ pinned: true })
     })
-    // .then(r => r.json()).then(img => console.log("yoyoyoyoyo"));
   }
 
   imageSrc = () => {
@@ -101,27 +104,38 @@ class App extends Component {
     console.log('clikarooni')
   }
 
+  pinClick = () => {
+    console.log("pin click")
+  }
+
 
   render() {
     return (
-      <div className="App">
-    
-        {/* <nav className="RowTwo"><h1>nav</h1></nav> */}
-        <Link className="Triangledown" to='/pinned'></Link>
+      <div className="App">        
+        <span>
+          <Link className="Triangledown" to='/about'></Link>
+          <Route path="/about" component={About} />
+        </span>
+
         <div className={"Card"} >
 
           <span>
             <DisplayFeatureImage featureImage={this.state.featuredImage} featuredClick={this.featureClick} handleClick={this.deleteMe} savedColor={this.state.colors} />
           </span>
-        </div>
 
+        </div>
+        <div pinClick={this.pinClick}>
+          <span>
+            <Link className="Triangle" to='/pinned'></Link>
+            <Route path="/pinned" component={Pinned}/>
+          </span>
+        </div>
 
         <Palette src={this.state.featuredImage.html} crossOrigin="Anonymous" colorCount={3}>
           {({ data }) => (
             <div className={"Row"} style={{ color: data }}>
               {data.map(color => (
                 <DisplayColors key={color} color={color} colorClick={this.saveColor} />
-
               ))}
             </div>
           )}
@@ -130,8 +144,7 @@ class App extends Component {
         <div className={"RowTwo"} >
           <MatchedImages allImages={this.state.allImages} chooseFeatured={this.chooseFeaturedImage} />
         </div>
-        <About />
-        {/* <Pinned pinClick={this.aboutClick}/> */}
+    
       </div>
     )
   }

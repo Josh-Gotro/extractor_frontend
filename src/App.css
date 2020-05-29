@@ -21,7 +21,8 @@
   align-items: center;
   justify-content: center;
   color: rgb(205, 212, 222);
-  font-size: 30px;
+  /* font-size: 30px; */
+  font-size: 15px;
   -webkit-text-stroke: 1px pink;
   box-shadow: 0 70px 70px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
   box-sizing: border-box;
@@ -80,7 +81,7 @@ img {
   box-shadow: 0 70px 70px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
   box-sizing: border-box;
   margin: 12px;
-  cursor: grabbing;
+  /* cursor: grabbing; */
 
   
 

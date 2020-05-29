@@ -55,6 +55,17 @@ class App extends Component {
     }
   }
 
+  deleteMe = (id) => {
+    console.log(id)
+    fetch(`http://localhost:3001/images/${id}`, {
+      method: "DELETE",
+    });
+    this.setState({featuredImage: []});
+    this.setState({allImages: 
+       this.state.allImages.filter(img => img.id !==id)
+    })
+
+  }
 
   render() {
     return (
@@ -62,22 +73,26 @@ class App extends Component {
         <nav><h1>nav</h1></nav>
         <div className={"Card"} >
           <span>
-            <DisplayFeatureImage  featuredClick={this.featureClick} img={this.imageSrc()}/>
+            <DisplayFeatureImage featureImage={this.state.featuredImage} featuredClick={this.featureClick} handleClick={this.deleteMe}/>
           </span>
         </div>
+      
 
         <Palette src={this.state.featuredImage.html} crossOrigin="Anonymous" colorCount={3}>
           {({ data }) => ( 
-            <div className='Hidden' style={{ color: data }}>
-
+            <div className={"Row"}  style={{ color: data }}>
               {data.map(color => (
-                <DisplayColors color={color} /> 
+                <DisplayColors key={color} color={color} /> 
               ))}
             </div>
           )}
           </Palette>
-        <MatchedImages allImages={this.state.allImages} chooseFeatured={this.chooseFeaturedImage}/>
+      
+        <div className={"RowTwo"} >
+            <MatchedImages allImages={this.state.allImages} chooseFeatured={this.chooseFeaturedImage} />
+        </div>
       </div>
+
     )
     }
 

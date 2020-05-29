@@ -11,9 +11,9 @@ class MatchedImages extends Component {
 
     render() {
         return (
-            <div className="img-list">
+            <>
                 {this.mapImages()}
-            </div>
+            </>
         );
     }
 }

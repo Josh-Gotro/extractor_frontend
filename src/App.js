@@ -17,12 +17,21 @@ class App extends Component {
       featuredImage: [],
       colors: [],
     }
+ 
   }
 
   componentDidMount = () => {
     fetch("http://localhost:3001/images").then(r => r.json()).then(allImages => this.setState({ allImages }));
     fetch("http://localhost:3001/colors").then(r => r.json()).then(allColors => this.setState({ allColors }));
+    window.scrollTo(0, 0);
   }
+
+  componentDidUpdate = () => {
+    window.scrollTo(0, 0);
+  }
+
+
+
 
   chooseFeaturedImage = (imageInfo) => {
     this.setState({ featuredImage: imageInfo })
@@ -62,6 +71,7 @@ class App extends Component {
   deleteMe = (e, id) => {
     e.preventDefault()
     console.log(id)
+    console.log("deleted from db :P ")
     fetch(`http://localhost:3001/images/${id}`, {
       method: "DELETE",
     });
@@ -83,7 +93,7 @@ class App extends Component {
       },
       body: JSON.stringify({ rgb: color })
 
-    }).then(r => r.json()).then(console.log("hi"));
+    }).then(r => r.json()).then(console.log("saved to db"));
 
   }
 
@@ -95,6 +105,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+    
         {/* <nav className="RowTwo"><h1>nav</h1></nav> */}
         <Link className="Triangledown" to='/pinned'></Link>
         <div className={"Card"} >

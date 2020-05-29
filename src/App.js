@@ -36,8 +36,9 @@ class App extends Component {
 
   }
 
-  featureClick = (image) => {
+  featureClick = (e, image) => {
     //console.log("ooooo mmmm gggg", this.state)
+    e.preventDefault()
     this.setState({
       allImages: 
         this.state.allImages.map(img => {
@@ -55,7 +56,8 @@ class App extends Component {
     }
   }
 
-  deleteMe = (id) => {
+  deleteMe = (e, id) => {
+    e.preventDefault()
     console.log(id)
     fetch(`http://localhost:3001/images/${id}`, {
       method: "DELETE",
@@ -64,13 +66,12 @@ class App extends Component {
     this.setState({allImages: 
        this.state.allImages.filter(img => img.id !==id)
     })
-
   }
 
   render() {
     return (
       <div className="App">
-        <nav><h1>nav</h1></nav>
+        {/* <nav className="RowTwo"><h1>nav</h1></nav> */}
         <div className={"Card"} >
           <span>
             <DisplayFeatureImage featureImage={this.state.featuredImage} featuredClick={this.featureClick} handleClick={this.deleteMe}/>
@@ -82,7 +83,8 @@ class App extends Component {
           {({ data }) => ( 
             <div className={"Row"}  style={{ color: data }}>
               {data.map(color => (
-                <DisplayColors key={color} color={color} /> 
+                <DisplayColors key={color} color={color} />
+                
               ))}
             </div>
           )}

@@ -5,9 +5,9 @@ import Image from './Image'
 class DisplayFeatureImage extends Component {
 
     deleteSucker = () => {
-        console.log(this.props.featureImage)
+        // console.log(this.props.featureImage)
         if (this.props.featureImage.id) {
-            return <button onClick={() => this.props.handleClick(this.props.featureImage.id)}>please delete me forever</button>
+            return <button onClick={(e) => this.props.handleClick(e, this.props.featureImage.id)}>if you must</button>
         }
     }
 

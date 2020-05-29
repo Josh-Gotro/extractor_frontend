@@ -4,12 +4,8 @@ import DisplayColors from './components/DisplayColors'
 import DisplayFeatureImage from './components/DisplayFeatureImage'
 import MatchedImages from './components/MatchedImages'
 import { Palette } from 'color-thief-react';
-
-
-// import ColorThief from '../node_modules/colorthief/dist/color-thief.mjs'
-// const ColorThief = require('colorthief');
-
-
+import About from './components/About'
+import Pinned from './components/Pinned'
 
 class App extends Component {
   constructor() {
@@ -20,7 +16,6 @@ class App extends Component {
       featuredImage: [],
       colors: [],
     }
-  
   }
 
   componentDidMount = () => {
@@ -29,16 +24,11 @@ class App extends Component {
   }
 
   chooseFeaturedImage = (imageInfo) => {
-
-    //console.log("we did it yay", imageInfo)
     this.setState({ featuredImage: imageInfo })
-   
-
+    this.updatePinned(imageInfo.id)
   }
 
-  featureClick = (e, image) => {
-    //console.log("ooooo mmmm gggg", this.state)
-    // e.preventDefault()
+  featureClick = (image) => {
     this.setState({
       allImages: 
         this.state.allImages.map(img => {
@@ -47,7 +37,19 @@ class App extends Component {
           }
           return img
         })
+    });
+  }
+
+  updatePinned = (id) => {
+    fetch(`http://localhost:3001/images/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({ pinned: true })
     })
+    // .then(r => r.json()).then(img => console.log("yoyoyoyoyo"));
   }
 
   imageSrc = () => {
@@ -89,6 +91,7 @@ class App extends Component {
       <div className="App">
         {/* <nav className="RowTwo"><h1>nav</h1></nav> */}
         <div className={"Card"} >
+          
           <span>
             <DisplayFeatureImage featureImage={this.state.featuredImage} featuredClick={this.featureClick} handleClick={this.deleteMe} savedColor={this.state.colors}/>
           </span>
@@ -109,6 +112,7 @@ class App extends Component {
         <div className={"RowTwo"} >
             <MatchedImages allImages={this.state.allImages} chooseFeatured={this.chooseFeaturedImage} />
         </div>
+        <About currentColor={this.state.allColors}/>
       </div>
 
     )

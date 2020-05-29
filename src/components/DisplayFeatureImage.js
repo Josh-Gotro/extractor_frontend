@@ -6,7 +6,7 @@ class DisplayFeatureImage extends Component {
    
     render() {
         return (
-            <div>
+            <div >
                 <Image key={this.props.featureImage.id} imageDetails={this.props.featureImage} handleClick={this.props.featuredClick}/>
                 
             </div>

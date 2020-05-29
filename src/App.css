@@ -10,16 +10,6 @@
   font-size: calc(10px + 2vmin);
 }
 
-.Card {
-  background-color: white;
-  padding: 64px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
-  box-sizing: border-box;
-}
-
 .Highlight {
   background-color: rgb(188, 185, 236)
 }
@@ -28,12 +18,69 @@
   height: 180px;
   width: 200px;
   margin: 20px;
-  background-color: #fff;
+  /* background-color: #fff; */
   border: 2px solid rgb(187, 186, 186);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  /* flex-direction: column; */
   font-size: 16px;
 }
+
+.Card {
+  background-color: rgb(205, 212, 222);
+
+  padding: 64px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+}
+
+.Row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+.Column {
+  background-color: pink;
+  max-width: 33%;
+  padding: 0 4px;
+}
+
+.RowTwo {
+    background-color: rgb(205, 212, 222);
+    flex-direction: row;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0 4px;
+  align-content: space-around;
+}
+
+.ImagePool {
+  background-color: yellow;
+  align-self: flex-start;
+  
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+
+
+
+
+
+/* 
+.ImagePool a:hover {
+  background-color: rgb(187, 186, 186);
+  color: black;
+} */
+
+
+
+

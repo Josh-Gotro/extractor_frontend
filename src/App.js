@@ -55,17 +55,23 @@ class App extends Component {
             <DisplayFeatureImage featureImage={this.state.featuredImage} featuredClick={this.featureClick}/>
           </span>
         </div>
+      
+
         <Palette src={this.state.featuredImage.html} crossOrigin="Anonymous" colorCount={3}>
           {({ data }) => ( 
-            <div className='Hidden' style={{ color: data }}>
+            <div className={"Row"}  style={{ color: data }}>
               {data.map(color => (
                 <DisplayColors color={color} /> 
               ))}
             </div>
           )}
           </Palette>
-        <MatchedImages allImages={this.state.allImages} chooseFeatured={this.chooseFeaturedImage}/>
+      
+        <div className={"RowTwo"} >
+            <MatchedImages allImages={this.state.allImages} chooseFeatured={this.chooseFeaturedImage} />
+        </div>
       </div>
+
     )
     }
 

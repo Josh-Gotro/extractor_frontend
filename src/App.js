@@ -50,6 +50,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <nav><h1>nav</h1></nav>
         <div className={"Card"} >
           <span>
             <DisplayFeatureImage featureImage={this.state.featuredImage} featuredClick={this.featureClick}/>

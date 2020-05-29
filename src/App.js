@@ -19,6 +19,7 @@ class App extends Component {
       allColors: null,
       featuredImage: [],
       colors: [],
+
     }
   }
 
@@ -28,9 +29,11 @@ class App extends Component {
   }
 
   chooseFeaturedImage = (imageInfo) => {
+
     //console.log("we did it yay", imageInfo)
     this.setState({ featuredImage: imageInfo })
     // this.setState({})
+
   }
 
   featureClick = (image) => {
@@ -46,6 +49,12 @@ class App extends Component {
     })
   }
 
+  imageSrc = () => {
+    if (this.state.featuredImage !== null) {
+      return this.state.featuredImage
+    }
+  }
+
 
   render() {
     return (
@@ -53,12 +62,14 @@ class App extends Component {
         <nav><h1>nav</h1></nav>
         <div className={"Card"} >
           <span>
-            <DisplayFeatureImage featureImage={this.state.featuredImage} featuredClick={this.featureClick}/>
+            <DisplayFeatureImage  featuredClick={this.featureClick} img={this.imageSrc()}/>
           </span>
         </div>
+
         <Palette src={this.state.featuredImage.html} crossOrigin="Anonymous" colorCount={3}>
           {({ data }) => ( 
             <div className='Hidden' style={{ color: data }}>
+
               {data.map(color => (
                 <DisplayColors color={color} /> 
               ))}

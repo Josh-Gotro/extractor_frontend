@@ -7,7 +7,7 @@ class DisplayFeatureImage extends Component {
     deleteSucker = () => {
         // console.log(this.props.featureImage)
         if (this.props.featureImage.id) {
-            return <button style={ {background: this.props.savedColor} }onClick={(e) => this.props.handleClick(e, this.props.featureImage.id)}>if you must</button>
+            return <button className="Butt" style={ {background: this.props.savedColor} }onClick={(e) => this.props.handleClick(e, this.props.featureImage.id)}>do not press</button>
         }
     }
 

@@ -133,7 +133,9 @@ img {
 
 .SomeText {
   color: goldenrod;
+    border: 1px solid pink;
   font-family: "Lucida Console", Courier, monospace;
+    font-size: 20px;
   /* font: italic; */
   /* -webkit-text-stroke: 1px pink; */
 }
